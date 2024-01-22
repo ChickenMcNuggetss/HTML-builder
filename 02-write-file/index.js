@@ -1,16 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 
-fs.writeFile(path.join(__dirname, 'text.txt'), '', () => {
-  console.log('Hello!');
-});
+(async function writeFile() {
+  await fs.promises.writeFile(path.join(__dirname, 'text.txt'), '');
 
 const { stdout, stdin, exit } = process;
 function writeBye() {
   stdout.write('\nGoodbye');
   exit();
 }
-stdout.write('Write down your text:\n');
+stdout.write('Hello! Write down your text:\n');
 stdin.on('data', (data) => {
   if (data.toString() === 'exit\n') {
     writeBye();
@@ -24,3 +23,4 @@ stdin.on('data', (data) => {
 });
 
 process.on('SIGINT', writeBye);
+})()
