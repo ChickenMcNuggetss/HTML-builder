@@ -12,7 +12,7 @@ fs.promises.readdir(
       if (el.isFile()) {
       const filePath = path.join(newPath, el.name);
       fs.promises.stat(filePath).then((info) => {
-        console.log(`${el.name.slice(0, el.name.indexOf("."))} - ${path.extname(el.name).slice(1)} - ${info.size/1024} kb`);
+        console.log(`${el.name.slice(0, el.name.indexOf("."))} - ${path.extname(el.name).slice(1)} - ${info.size} b`);
       });
       }
     }
