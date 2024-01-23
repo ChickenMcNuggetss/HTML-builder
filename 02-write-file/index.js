@@ -11,7 +11,7 @@ const path = require('path');
   }
   stdout.write('Hello! Write down your text:\n');
   stdin.on('data', (data) => {
-    if (data.toString() === 'exit\n') {
+    if (data.toString().includes('exit')) {
       writeBye();
     }
     fs.appendFile(path.join(__dirname, 'text.txt'), data, (err) => {
